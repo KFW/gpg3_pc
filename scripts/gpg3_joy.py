@@ -17,8 +17,11 @@ rospy.init_node("gpg3_joy")
 # definitions of functions #
 def callback(msg):
     global move
-    move.linear.x = msg.axes[1]     # left stick left/right
-    move.angular.z = msg.axes[0]    # left stick up/down
+    move.linear.x = msg.axes[1]     # left stick up/down
+    move.angular.z = msg.axes[0]    # left stick left/right - accentuate turning
+    
+def print_twist():
+    print 'x: {0:.3f}    z: {1:.3f}'.format(move.linear.x, move.angular.z)
 
 # clean shutdown
 def shutdownhook():
@@ -38,4 +41,5 @@ rospy.on_shutdown(shutdownhook)
 
 while not rospy.is_shutdown():
     pub.publish(move)
+    print_twist()
     rate.sleep()
