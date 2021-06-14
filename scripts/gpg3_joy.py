@@ -9,7 +9,6 @@ from geometry_msgs.msg import Twist   #turtle cmd_vel message type
 
 # initialize globals
 move = Twist()
-stop = True
 
 # node initialization #
 rospy.init_node("gpg3_joy")
@@ -41,5 +40,5 @@ rospy.on_shutdown(shutdownhook)
 
 while not rospy.is_shutdown():
     pub.publish(move)
-    print_twist()
+    # print_twist()
     rate.sleep()
