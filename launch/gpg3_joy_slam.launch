@@ -1,0 +1,5 @@
+<launch>
+<!-- PC side of running slam while controlling robot with joystick -->
+    <include file="$(find gopigo3_navigation)/launch/gopigo3_slam.launch" />
+    <include file="$(find gpg3_pc)/launch/gpg3_joy.launch" />
+</launch>
