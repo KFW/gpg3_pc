@@ -13,7 +13,7 @@
   <arg name="multi_robot_name" default=""/>
 
   <!-- GoPiGo3 URDF model & robot_state_publisher -->
-  <param name="robot_description" textfile="$(find gopigo3_navigation)/urdf/$(arg model)" />
+  <param name="robot_description" textfile="$(find gpg3_pc)/urdf/$(arg model)" />
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="50.0" />
