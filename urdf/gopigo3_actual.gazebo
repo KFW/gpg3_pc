@@ -39,14 +39,6 @@
     <color rgba="0.75 0.75 0.75 1"/>
   </material>
 
-  <!-- need dummy 'root' link to avoid KDL error message about inertia -->
-  <link name="root" />
-
-  <joint name="base_link_joint" type="fixed">
-    <parent link="root"/>
-    <child link="base_link"/>
-  </joint>
-
   <!-- Base Link -->
   <link name="base_link">
     <visual>
