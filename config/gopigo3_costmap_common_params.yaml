@@ -1,7 +1,8 @@
 obstacle_range: 3.0
 raytrace_range: 3.5
 
-footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]
+# robot is 0.225 m long (split 9/13.5 from pivot center), and 0.135 m wide
+footprint: [[0.09, 0.0675], [0.09, -0.0675], [-0.135, -0.0675], [-0.135, 0.0675]]
 #robot_radius: 0.105
 
 inflation_radius: 1.0
