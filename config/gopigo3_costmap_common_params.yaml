@@ -5,8 +5,8 @@ raytrace_range: 3.5
 footprint: [[0.09, 0.0675], [0.09, -0.0675], [-0.135, -0.0675], [-0.135, 0.0675]]
 #robot_radius: 0.105
 
-inflation_radius: 1.0
-cost_scaling_factor: 3.0
+inflation_radius: 0.2 #  1.0 way too big for 'roboland'
+cost_scaling_factor: 4.0 # 3.0 larger value DECREASES cost value
 
 map_type: costmap
 observation_sources: scan
