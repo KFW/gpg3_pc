@@ -1,4 +1,6 @@
 <launch>
+  <!-- minimal launch of robot and RVIZ on PC side -->
+  
   <!-- Robot model to match with that of Gazebo or the physical robot -->
   <arg name="model" default="gopigo3_actual.gazebo" />
 
