@@ -1,0 +1,5 @@
+<launch>
+<!-- PC side minimal launch while controlling robot with joystick -->
+    <include file="$(find gpg3_pc)/launch/minimal.launch" />
+    <include file="$(find gpg3_pc)/launch/gpg3_joy.launch" />
+</launch>
