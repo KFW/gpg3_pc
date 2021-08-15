@@ -1,4 +1,4 @@
 .vscode
 desktop.ini
-config/*.rviz
+*.rviz
 
