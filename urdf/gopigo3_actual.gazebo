@@ -34,64 +34,75 @@
   <material name="black">
     <color rgba="0 0 0 1"/>
   </material>
+  
+  <material name="shadow">
+    <color rgba="0 0 0 0.25"/>
+  </material>
 
   <material name="grey">
     <color rgba="0.75 0.75 0.75 1"/>
   </material>
 
+  <!-- Base Footprint -->
+  <link name="base_footprint" /> <!-- actual size defined in navigation parameters -->
+
+  
   <!-- Base Link -->
   <link name="base_link">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="-0.020 0 0" rpy="0 0 0" />
       <geometry>
-          <box size="0.200 0.088 0.080"/> <!-- original <box size="0.25 0.25 0.125"/> -->
+          <box size="0.210 0.102 0.080" /> 
       </geometry>
-      <material name="black"/>
+      <material name="shadow" />
     </visual>
-
     <!-- Base collision, mass and inertia -->
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="-0.020 0 0" rpy="0 0 0" />
       <geometry>
-          <box size="0.200 0.088 0.080"/> <!-- original <box size="0.25 0.25 0.125"/> -->
+          <box size="0.210 0.102 0.080" /> 
       </geometry>
     </collision>
-
     <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="-0.020 0 0" rpy="0 0 0" />
       <mass value="0.6"/>
-      <inertia ixx="9.2425e-06" ixy="0.0" ixz="0.0" iyy="9.2425e-06" iyz="0.0" izz="1.536e-05"/>
+      <inertia ixx="0.0008402" ixy="0.0" ixz="0.0" iyy="0.002525" iyz="0.0" izz="0.0027252" />
     </inertial>
 
     <!-- Caster attachment -->
     <visual name="caster_visual">
-      <origin xyz="-0.085 0 -0.04" rpy="0 0 0" />
+      <origin xyz="-0.105 0 -0.037" rpy="0 0 0" />
       <geometry>
         <sphere radius="0.025" />
       </geometry>
       <material name="grey"/>
     </visual>
-
     <collision name="caster_collision">
-      <origin xyz="-0.085 0 -0.04" rpy="0 0 0" />
+      <origin xyz="-0.105 0 -0.040" rpy="0 0 0" />
       <geometry>
         <sphere radius="0.025" />
       </geometry>
     </collision>
-
     <inertial name="caster_inertia">
-      <origin xyz="-0.085 0 -0.04" rpy="0 0 0" />
+      <origin xyz="-0.105 0 -0.040" rpy="0 0 0" />
       <mass value="0.15"/>
-      <inertiai xx="3.75e-05" ixy="0.0" ixz="0.0" iyy="3.75e-05" iyz="0.0" izz="3.75e-05"/>
+      <inertiai xx="3.75e-05" ixy="0.0" ixz="0.0" iyy="3.75e-05" iyz="0.0" izz="3.75e-05" />
     </inertial>
   </link>
 
-<!-- Right Wheel -->
+  <!-- base_link JOINT base_footprint -->
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.060" rpy="0 0 0" />
+  </joint>
+
+  <!-- Right Wheel -->
   <link name="right_wheel">
     <visual>
       <origin xyz="0 -0.013 0" rpy="1.570795 0 0" />
       <geometry>
-          <cylinder length="0.026" radius="0.032" /> <!-- original <cylinder length="0.05" radius="0.1" /> -->
+          <cylinder length="0.026" radius="0.0335" /> 
       </geometry>
       <material name="yellow"/>
     </visual>
@@ -99,13 +110,13 @@
     <collision>
       <origin xyz="0 0 0" rpy="1.570795 0 0" />
       <geometry>
-         <cylinder length="0.025" radius="0.032" /> <!-- original <cylinder length="0.05" radius="0.1" /> -->
+         <cylinder length="0.026" radius="0.0335" /> 
       </geometry>
     </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="1.570795 0 0" />
       <mass value="0.03"/>
-      <inertia ixx="9.2425e-06" ixy="0.0" ixz="0.0" iyy="9.2425e-06" iyz="0.0" izz="1.536e-05"/>
+      <inertia ixx="1.0106875e-05" ixy="0.0" ixz="0.0" iyy="1.0106875e-05" iyz="0.0" izz="1.683375e-05" />
     </inertial>
   </link>
 
@@ -113,7 +124,7 @@
   <joint name="joint_right_wheel" type="continuous">
     <parent link="base_link"/>
     <child link="right_wheel"/>
-    <origin xyz="0.020 -0.044 -0.03" rpy="0 0 0" /> 
+    <origin xyz="0.020 -0.046 -0.027" rpy="0 0 0" /> 
     <axis xyz="0 1 0" />
   </joint>
 
@@ -121,7 +132,7 @@
   <joint name="joint_left_wheel" type="continuous">
     <parent link="base_link"/>
     <child link="left_wheel"/>
-    <origin xyz="0.020 0.044 -0.03" rpy="0 0 0" /> 
+    <origin xyz="0.020 0.046 -0.027" rpy="0 0 0" /> 
     <axis xyz="0 1 0"/>
   </joint>
 
@@ -130,7 +141,7 @@
     <visual>
       <origin xyz="0 0.013 0" rpy="1.570795 0 0" />
       <geometry>
-          <cylinder length="0.026" radius="0.032" /> <!-- original <cylinder length="0.05" radius="0.1" /> -->
+          <cylinder length="0.026" radius="0.0335" /> <!-- original <cylinder length="0.05" radius="0.1" /> -->
       </geometry>
       <material name="yellow"/>
     </visual>
@@ -138,13 +149,13 @@
     <collision>
       <origin xyz="0 -0.013 0" rpy="1.570795 0 0" />
       <geometry>
-          <cylinder length="0.025" radius="0.032" /> <!-- original <cylinder length="0.05" radius="0.1" /> -->
+          <cylinder length="0.026" radius="0.0335" /> <!-- original <cylinder length="0.05" radius="0.1" /> -->
       </geometry>
     </collision>
     <inertial>
       <origin xyz="0 -0.013 0" rpy="1.570795 0 0" />
       <mass value="0.03"/>
-      <inertia ixx="9.2425e-06" ixy="0.0" ixz="0.0" iyy="9.2425e-06" iyz="0.0" izz="1.536e-05"/>
+      <inertia ixx="1.0106875e-05" ixy="0.0" ixz="0.0" iyy="1.0106875e-05" iyz="0.0" izz="1.683375e-05" />
     </inertial>
   </link>
 
@@ -153,51 +164,34 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.005 0.005 0.005"/>
+        <box size="0.005 0.05 0.025" />
       </geometry>
-      <material name="orange"/>
+      <material name="white"/>
     </visual>
   </link> 
  
   <joint name="distance_sensor_joint" type="fixed">
-    <axis xyz="0 1 0" />
-    <origin xyz="0.103 0 -0.01" rpy="0 0 0"/> <!-- original xyz="0.1225 0 0.065"-->
+    <origin xyz="0.085 0 -0.01" rpy="0 0 0" /> 
     <parent link="base_link"/>
     <child link="distance_sensor"/>
   </joint>
 
-
-  <!-- Distance Sensor solid JOINT base_link -->
-  <joint name="distance_sensor_solid_joint" type="fixed">
-    <axis xyz="0 1 0" />
-    <origin xyz="0.0675 0 -0.01" rpy="0 0 0"/>
-    <parent link="base_link"/>
-    <child link="distance_sensor_solid"/>
-  </joint>
-  <!-- Distance Sensor solid-->
-  <link name="distance_sensor_solid">
-    <collision>
-      <origin xyz="0 0 0" rpy="1.570795 0 1.570795" /> <!-- original xyz="0.1 0 0.0775" -->
-      <geometry>
-        <box size="0.005 0.005 0.005"/>
-      </geometry>
-    </collision>
-
+  <!-- IMU -->
+  <link name="imu">
     <visual>
-      <origin xyz="0 0 0" rpy="1.570795 0 1.570795" /><!-- original xyz="0.1 0 0.0775" -->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://gopigo3_navigation/meshes/IR_Sensor_Sharp_GP2Y_solid.stl" scale="0.0025 0.0025 0.0025"/>
+        <box size="0.025 0.025 0.005" />
       </geometry>
-      <material name="white"/>
+      <material name="blue"/>
     </visual>
-
-    <inertial>
-      <origin xyz="0 0 0" rpy="1.570795 0 1.570795" />
-      <mass value="1e-5" />
-      <origin xyz="0.005 0 -0.01" rpy="0 0 0"/>
-      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
-    </inertial>caster_visual
-  </link>
+  </link> 
+ 
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="0.070 -0.04 -0.02" rpy="0 0 0" /> 
+    <parent link="base_link"/>
+    <child link="imu"/>
+  </joint>
 
   <!-- 2D Camera as a mesh of actual PiCamera -->
   <link name="camera">
@@ -208,14 +202,12 @@
       </geometry>
       <material name="green"/>
     </visual>
-    
     <collision>
       <origin xyz="0 0 0" rpy="0 -1.570795 0" />
-      <geometry>
-        <box size="0.015 0.025 0.025"/> <!-- original <box size="0.075 0.075 0.025"/> -->
+      <geometry>  
+        <box size="0.015 0.025 0.025"/>
       </geometry>
     </collision>
-
     <inertial>
       <origin xyz="0 0 0" rpy="0 -1.570795 0" />
       <mass value="1e-3" />
@@ -225,8 +217,7 @@
 
   <!-- 2D Camera JOINT base_link -->
   <joint name="joint_camera" type="fixed">
-    <axis xyz="0 0 1" />
-    <origin xyz="0.08 0 0.055" rpy="0 0 0"/> <!-- original xyz="0.125 0 0.025"-->
+    <origin xyz="0.055 0 0.055" rpy="0 0 0" /> 
     <parent link="base_link"/>
     <child link="camera"/>
   </joint>
@@ -236,7 +227,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <box size="0.005 0.005 0.005"/>
+        <box size="0.005 0.005 0.005" />
       </geometry>
       <material name="red"/>
     </visual> 
@@ -246,14 +237,14 @@
   <joint name="scan_joint" type="fixed">
     <parent link="base_link"/>
     <child link="base_scan"/>
-    <origin xyz="-0.005 0 0.10" rpy="0 0 0"/> <!-- original xyz="0.01 0.05 0.125" rpy="0 0 -1.6"-->
+    <origin xyz="-0.025 0 0.085" rpy="0 0 0"/> 
   </joint>
 
   <!-- base_scan_solid JOINT base_scan -->
   <joint name="scan_solid_joint" type="fixed">
     <parent link="base_scan"/>
     <child link="base_scan_solid"/>
-    <origin xyz="0 0 0.0075" rpy="0 0 0"/>
+    <origin xyz="0 0 0.030" rpy="0 0 0"/>
   </joint>
 
   <!-- base_scan_solid -->
@@ -261,18 +252,16 @@
     <visual> <!-- <visual name="laser_scan_body"> -->
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://gopigo3_navigation/meshes/X4.stl" scale="0.001 0.001 0.001"/> <!-- original scale="0.0015 0.0015 0.0015" -->
+        <mesh filename="package://gopigo3_navigation/meshes/X4.stl" scale="0.0011 0.0011 0.0011"/> 
       </geometry>
       <material name="blue"/>
     </visual>
-
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <cylinder length="0.06" radius="0.033"/> <!-- original <cylinder length="0.01575" radius="0.0275"/> -->
+        <cylinder length="0.06" radius="0.033"/> 
       </geometry>
     </collision>
-
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <mass value="0.17" />
@@ -298,6 +287,14 @@
     <material>Gazebo/Blue</material>
   </gazebo> 
 
+  <gazebo reference="distance_sensor">
+    <material>Gazebo/White</material>
+  </gazebo> 
+
+  <gazebo reference="imu">
+    <material>Gazebo/Blue</material>
+  </gazebo> 
+
 
   <!-- Differential Drive Controller -->
   <!-- https://answers.ros.org/question/236122/diffdrive-odometry-source-is-missing -->
@@ -307,13 +304,13 @@
       <updateRate>20</updateRate>
       <leftJoint>joint_left_wheel</leftJoint>
       <rightJoint>joint_right_wheel</rightJoint>
-      <wheelSeparation>0.117</wheelSeparation> <!-- original 0.6 -->
-      <wheelDiameter>0.0665</wheelDiameter> <!-- original 0.3 -->
+      <wheelSeparation>0.118</wheelSeparation> 
+      <wheelDiameter>0.067</wheelDiameter> 
       <torque>0.1</torque>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>base_link</robotBaseFrame>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
       <legacyMode>false</legacyMode>
       <publishTf>1</publishTf>
       <rosDebugLevel>na</rosDebugLevel>
@@ -324,6 +321,7 @@
       <wheelTorque>5</wheelTorque>
     </plugin>
   </gazebo>
+
 <!-- Distance Sensor controller -->
   <gazebo reference="distance_sensor">        
     <sensor type="ray" name="laser_distance">
@@ -397,42 +395,7 @@
     <material>Gazebo/Green</material>
   </gazebo>
 
-  <!-- Laser Distance Sensor YDLIDAR X4 controller-->
-  <gazebo reference="base_scan">
-    <sensor type="ray" name="lds_lfcd_sensor">
-      <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize> <!-- ########### should be false except for testing ########### -->
-      <update_rate>5</update_rate>
-      <ray>
-        <scan>
-          <horizontal>
-            <samples>720</samples>
-            <resolution>0.5</resolution>
-            <min_angle>0.0</min_angle>
-            <max_angle>6.28319</max_angle>
-          </horizontal>
-        </scan>
-        <range>
-          <min>0.12</min>
-          <max>10</max>
-          <resolution>0.015</resolution>
-        </range>
-        <noise>
-          <type>gaussian</type>
-          <!-- Noise parameters based on published spec for YDLIDAR X4
-               is 1.5% at half range 4m (= 60mm, "+-160mm" accuracy at max. range 8m).
-               A mean of 0.0m and stddev of 0.020m will put 99.7% of samples
-               within 0.16m of the true reading. -->
-          <mean>0.0</mean>
-          <stddev>0.02</stddev>
-        </noise>
-      </ray>
-      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
-        <!-- topicName>/gopigo/scan</topicName -->
-        <topicName>scan</topicName>
-        <frameName>base_scan</frameName>
-      </plugin>
-    </sensor>
-  </gazebo>
+<!-- IMU controller --> 
+  <!-- TBD -->
 
 </robot>

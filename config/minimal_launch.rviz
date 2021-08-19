@@ -7,7 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-        - /RobotModel1/Status1
         - /LaserScan1
       Splitter Ratio: 0.8073089718818665
     Tree Height: 703
@@ -29,7 +28,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: LaserScan
+    SyncSource: ""
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -65,6 +64,10 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
@@ -90,7 +93,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        distance_sensor_solid:
+        imu:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -116,6 +119,8 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_footprint:
+          Value: true
         base_link:
           Value: true
         base_scan:
@@ -126,11 +131,9 @@ Visualization Manager:
           Value: true
         distance_sensor:
           Value: true
-        distance_sensor_solid:
+        imu:
           Value: true
         left_wheel:
-          Value: true
-        odom:
           Value: true
         right_wheel:
           Value: true
@@ -140,7 +143,7 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        odom:
+        base_footprint:
           base_link:
             base_scan:
               base_scan_solid:
@@ -149,7 +152,7 @@ Visualization Manager:
               {}
             distance_sensor:
               {}
-            distance_sensor_solid:
+            imu:
               {}
             left_wheel:
               {}
@@ -191,7 +194,7 @@ Visualization Manager:
   Global Options:
     Background Color: 163; 163; 163
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: base_footprint
     Frame Rate: 30
   Name: root
   Tools:
@@ -215,25 +218,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.5125935077667236
+      Distance: 0.700554370880127
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.018773598596453667
-        Y: 0.046362150460481644
-        Z: -0.09755456447601318
+        X: -0.037358250468969345
+        Y: 0.1775692254304886
+        Z: -0.020907409489154816
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.45539799332618713
+      Pitch: 0.22039912641048431
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.8853979706764221
+      Yaw: 4.833582401275635
     Saved: ~
 Window Geometry:
   Displays:
@@ -252,4 +255,4 @@ Window Geometry:
     collapsed: false
   Width: 1605
   X: 219
-  Y: 73
+  Y: 27
