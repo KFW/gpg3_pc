@@ -1,16 +1,12 @@
 <launch>
-  <!-- uses simple map for testing -->
-  <!-- *** Arguments *** -->
-  <!-- Robot -->
-  <arg name="robot" default="gopigo3"/>
+  <!-- minimal launch of robot and RVIZ on PC side -->
+  
   <!-- Robot model to match with that of Gazebo or the physical robot -->
   <arg name="model" default="gopigo3_actual.gazebo" />
-  <!-- Map to use argument -->
-  <arg name="map_file" default="$(find gpg3_pc)/maps/simple.yaml"/>
+
   <!-- More arguments -->
-  <arg name="move_forward_only" default="false"/>
-  <arg name="open_rviz" default="true"/>
   <arg name="multi_robot_name" default=""/>
+  <arg name="open_rviz" default="true"/>
 
   <!-- GoPiGo3 URDF model & robot_state_publisher -->
   <param name="robot_description" textfile="$(find gpg3_pc)/urdf/$(arg model)" />
@@ -25,21 +21,10 @@
     <param name="use_gui" value="False"/>
   </node>
 
-  <!-- Map server -->
-  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
-  <node pkg="gmapping" type="slam_gmapping" name="gopigo3_slam_gmapping"/>
-  <!-- AMCL -->
-  <include file="$(find gpg3_pc)/launch/_gpg3_amcl.launch"/>
-
-  <!-- move_base -->
-  <include file="$(find gpg3_pc)/launch/_gpg3_move_base.launch">
-    <arg name="robot" value="$(arg robot)" />
-    <arg name="move_forward_only" value="$(arg move_forward_only)"/>
-  </include>
-
   <!-- rviz -->
   <group if="$(arg open_rviz)"> 
     <node pkg="rviz" type="rviz" name="rviz" required="true"
-          args="-d $(find gopigo3_navigation)/rviz/navigation.rviz"/>
+          args="-d $(find gpg3_pc)/config/minimal_launch.rviz"/>
   </group>
+
 </launch>
