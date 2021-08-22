@@ -42,10 +42,6 @@
   <material name="grey">
     <color rgba="0.75 0.75 0.75 1"/>
   </material>
-
-  <!-- Base Footprint -->
-  <link name="base_footprint" /> <!-- actual size defined in navigation parameters -->
-
   
   <!-- Base Link -->
   <link name="base_link">
@@ -89,13 +85,6 @@
       <inertiai xx="3.75e-05" ixy="0.0" ixz="0.0" iyy="3.75e-05" iyz="0.0" izz="3.75e-05" />
     </inertial>
   </link>
-
-  <!-- base_link JOINT base_footprint -->
-  <joint name="base_joint" type="fixed">
-    <parent link="base_footprint"/>
-    <child link="base_link"/>
-    <origin xyz="0 0 0.060" rpy="0 0 0" />
-  </joint>
 
   <!-- Right Wheel -->
   <link name="right_wheel">
