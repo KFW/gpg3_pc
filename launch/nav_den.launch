@@ -1,12 +1,11 @@
 <launch>
-  <!-- for home "Roboland" learning environment -->
   <!-- *** Arguments *** -->
   <!-- Robot -->
   <arg name="robot" default="gopigo3"/>
   <!-- Robot model to match with that of Gazebo or the physical robot -->
   <arg name="model" default="gopigo3_actual.gazebo" />
   <!-- Map to use argument -->
-  <arg name="map_file" default="$(find gopigo3_navigation)/maps/roboland02.yaml"/>
+  <arg name="map_file" default="$(find gopigo3_navigation)/maps/den_map.yaml"/>
   <!-- More arguments -->
   <arg name="move_forward_only" default="false"/>
   <arg name="open_rviz" default="true"/>
