@@ -41,4 +41,8 @@
     <node pkg="rviz" type="rviz" name="rviz" required="true"
           args="-d $(find gopigo3_navigation)/rviz/navigation.rviz"/>
   </group>
+
+  <!-- joystick control -->
+  <include file="$(find gpg3_pc)/launch/gpg3_joy.launch" />
+  
 </launch>
